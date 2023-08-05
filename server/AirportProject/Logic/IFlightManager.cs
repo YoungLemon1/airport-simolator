@@ -5,6 +5,7 @@ namespace FlightSimulator.Logic
     public interface IFlightManager
     {
         void Initialize();
-        Task StartFlight(Flight flight);
+        Task ManageFlight(Flight flight);
+        Task ContinueFlight(Flight flight);
     }
 }

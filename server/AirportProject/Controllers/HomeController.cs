@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Dynamic;
 using FlightSimulator.Models.Enums;
 
+using System.Diagnostics;
+using System;
+
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace FlightSimulator.Controllers
@@ -46,7 +49,7 @@ namespace FlightSimulator.Controllers
                 BadRequest();
                 return null;
             }
-            else return flight;
+            return flight;
         }
 
         // POST api/<ValuesController>
@@ -55,7 +58,7 @@ namespace FlightSimulator.Controllers
         public void Post([FromBody] Flight flight)
         {
             _repository.InsertFlight(flight);
-            _flightManager.StartFlight(flight);
+            _flightManager.ManageFlight(flight);
         }
 
         // PUT api/<ValuesController>/5
@@ -78,14 +81,26 @@ namespace FlightSimulator.Controllers
             else _repository.DeleteFlight(flight);
         }
         [Route("Start")]
-        public void RunSimulator()
+        public async void RunSimulator()
         {
-            var flights = _repository.GetFlights();
-            int lastFlightId = 1;
-            if (flights.Any())
-              lastFlightId = flights.Last().Id + 1;
             _simulator.StartSimulation();
-            _simulator.RunSimulator(lastFlightId);
+            IEnumerable<Flight> flights = _repository.GetFlights();
+            IEnumerable<Flight> currentFlights = flights.Where(f => f.StopId != null);
+            int lastFlightId = flights.Any() ? flights.Last().Id + 1 : 1;
+            int currentFlightsCount = currentFlights.Count();
+            if(currentFlights.Any())
+            {
+                foreach(var flight in currentFlights.Reverse())
+                {
+                    await _flightManager.ContinueFlight(flight);
+                }
+            }
+            _simulator.GenerateFlights(lastFlightId);
+            Console.WriteLine("Generating flights");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Current flights count is {flights.Count()}");
+            Console.WriteLine($"Total flight count is {flights.Count()}");
+            Console.WriteLine("Simulation started");
         }
         [Route("Stop")]
         public void StopSimulation()

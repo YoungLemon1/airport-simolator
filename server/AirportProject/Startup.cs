@@ -65,9 +65,9 @@ namespace FlightSimulator
             using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>()!.CreateScope();
             var flightManager = app.ApplicationServices.GetRequiredService<IFlightManager>();
             var context = serviceScope.ServiceProvider.GetRequiredService<AirportContext>();
-            //context.Database.EnsureDeleted();
-            //context.Database.EnsureCreated();
-            context.Database.Migrate();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+            //context.Database.Migrate();
             flightManager.Initialize();
         }
     }

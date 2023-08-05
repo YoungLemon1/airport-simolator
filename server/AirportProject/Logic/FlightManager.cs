@@ -14,7 +14,8 @@ namespace FlightSimulator.Logic
 {
     public class FlightManager : IFlightManager
     {
-        ///private readonly IRepository _repository;
+        
+        public Task[] RunningFlights { get; set; }
         public Stop[] Stops = Array.Empty<Stop>();
         public Stop[][] LandingPath = Array.Empty<Stop[]>();
         public Stop[][] TakeoffPath = Array.Empty<Stop[]>();
@@ -27,6 +28,7 @@ namespace FlightSimulator.Logic
 
         public FlightManager(IServiceScopeFactory scopeFactory)
         {
+            RunningFlights = Array.Empty<Task>();
             serviceScopeFactory = scopeFactory;
         }
         public void Initialize()
@@ -41,7 +43,7 @@ namespace FlightSimulator.Logic
             TakeoffPath = new Stop[][] { new Stop[] { gate2, gate1 }, new Stop[] { Stops[7] }, new Stop[] { Stops[3] } };
         }
 
-        public async Task StartFlight(Flight flight)
+        public async Task ManageFlight(Flight flight)
         {
             Stop[][] path;
             await airportCapacity.WaitAsync();
@@ -53,6 +55,29 @@ namespace FlightSimulator.Logic
             var repository = scope.ServiceProvider.GetRequiredService<IRepository>();
             await RunFlight(flight, path, repository);
         }
+
+        public async Task ContinueFlight(Flight flight)
+        {
+            Stop[][] path;
+            await airportCapacity.WaitAsync();
+            if (flight.FType == FlightType.landing)
+                path = LandingPath;
+            else
+                path = TakeoffPath;
+            using var scope = serviceScopeFactory.CreateScope();
+            var repository = scope.ServiceProvider.GetRequiredService<IRepository>();
+            var currentStopIndex = Array.FindIndex(path, stops => stops.Any(stop => stop.Id == flight.StopId));
+            if (currentStopIndex != -1)
+            {
+                var remainingStops = path[currentStopIndex..];
+                await RunFlight(flight, remainingStops, repository);
+            }
+            else
+            {
+                Console.WriteLine("Server Error: Flight path not found");
+            }
+        }
+
 
         private async Task RunFlight(Flight flight, Stop[][] path, IRepository repository)
         {

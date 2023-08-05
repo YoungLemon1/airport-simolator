@@ -8,8 +8,8 @@ namespace FlightSimualtor
 {
     public interface ISimulator
     {
-        void RunSimulator(int id);
-        void StartSimulation();
+        void GenerateFlights(int id);
+        public void StartSimulation();
         void StopSimulation();
     }
 }
