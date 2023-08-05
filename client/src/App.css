@@ -1,0 +1,111 @@
+h1,
+h2 {
+  margin: 6px;
+}
+.grid-container {
+  display: grid;
+  gap: 10px;
+  background-color: #779dba;
+  padding: 10px;
+  width: 100%;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-size: larger;
+  font-weight: 100;
+  border: 1px solid black;
+  min-width: 125.8px;
+  padding: 20px;
+}
+
+.stop1 {
+  grid-column: 8;
+  grid-row: 1;
+}
+
+.stop2 {
+  grid-column: 7;
+  grid-row: 1;
+}
+
+.stop3 {
+  grid-column: 6;
+  grid-row: 1;
+}
+.stop4 {
+  background-color: rgb(23, 212, 232, 0.8);
+  grid-column: 1 / span 5;
+  grid-row: 1;
+}
+.stop5 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+.stop6 {
+  background-color: rgb(12, 187, 242, 0.8);
+  grid-column: 3;
+  grid-row: 4;
+}
+.stop7 {
+  background-color: rgb(12, 187, 242, 0.8);
+  grid-column: 4;
+  grid-row: 4;
+}
+.stop5 {
+  grid-column: 1;
+  grid-row: 2;
+}
+.stop8 {
+  grid-column: 5;
+  grid-row: 2;
+}
+
+.junction {
+  grid-column: 1 / span 5;
+  grid-row: 3;
+}
+.terminal {
+  grid-column: 1 / span 5;
+  grid-row: 5;
+}
+
+#airport-status {
+  padding: 10px;
+  align-items: c;
+}
+
+#airport-status table {
+  margin: 16px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#airport-status table * {
+  width: max-content;
+  border: 1px solid slategray;
+}
+
+#airport-status table th,
+td {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  min-width: 100px;
+  text-align: center;
+}
+
+#start-button-container {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-btn {
+  margin-right: 4px;
+  margin-left: 4px;
+  padding: 16px 32px;
+  font-size: larger;
+}
