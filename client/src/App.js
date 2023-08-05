@@ -20,7 +20,7 @@ function App() {
           setAirport(data);
         })
         .catch((error) => setError(Error));
-    }, 1001);
+    }, 1000);
   }, []);
 
   if (!airport) return <h1>Loading...</h1>;
