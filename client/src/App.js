@@ -5,8 +5,8 @@ import SimulatorControlContainer from "./components/SimulatorControlContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-const base_api_url = "http://localhost:5140/api/Home";
-const api_url = "http://localhost:5140/api/Home/Get";
+const base_api_url = "http://localhost:5140";
+const api_get_url = `${base_api_url}/api/Home/Get`;
 
 function App() {
   const [airport, setAirport] = useState();
@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     setInterval(() => {
-      fetch(api_url)
+      fetch(api_get_url)
         .then((res) => res.json())
         .then((data) => {
           setAirport(data);

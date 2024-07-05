@@ -12,6 +12,11 @@ const GetFlightIcon = (stop, flights) => {
     }
   }
 };
+
+const splitStringAndNumbers = (str) => {
+  return str.replace(/(?<!\d)([a-zA-Z])(?=\d)|(?<=\d)([a-zA-Z])(?!\d)/g, "$1 ");
+};
+
 const AirportDiagram = ({ stops, flights, GetFlightName }) => {
   stops = stops.filter((stop) => stop.id >= 1 && stop.id <= 8);
   return (
@@ -19,7 +24,7 @@ const AirportDiagram = ({ stops, flights, GetFlightName }) => {
       {stops.map((stop) => (
         <div className={"grid-item stop" + stop.id} key={stop.id}>
           <p>
-            ({stop.id}) {splitStringAndNumbers(stop.name)}
+            #{stop.id} {splitStringAndNumbers(stop.name)}
           </p>
           <p>
             {GetFlightName(stop, flights)}
@@ -36,9 +41,5 @@ const AirportDiagram = ({ stops, flights, GetFlightName }) => {
     </div>
   );
 };
-
-function splitStringAndNumbers(str) {
-  return str.replace(/(?<!\d)([a-zA-Z])(?=\d)|(?<=\d)([a-zA-Z])(?!\d)/g, "$1 ");
-}
 
 export default AirportDiagram;
