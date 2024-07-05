@@ -19,7 +19,7 @@ const AirportDiagram = ({ stops, flights, GetFlightName }) => {
       {stops.map((stop) => (
         <div className={"grid-item stop" + stop.id} key={stop.id}>
           <p>
-            ({stop.id}) {stop.name}
+            ({stop.id}) {splitStringAndNumbers(stop.name)}
           </p>
           <p>
             {GetFlightName(stop, flights)}
@@ -36,5 +36,9 @@ const AirportDiagram = ({ stops, flights, GetFlightName }) => {
     </div>
   );
 };
+
+function splitStringAndNumbers(str) {
+  return str.replace(/(?<!\d)([a-zA-Z])(?=\d)|(?<=\d)([a-zA-Z])(?!\d)/g, "$1 ");
+}
 
 export default AirportDiagram;

@@ -3,7 +3,7 @@ const StopsTable = ({ stops, flights, GetStopFlightName }) => {
   return (
     <table id="stops">
       <thead>
-        <tr>
+        <tr id="stops-headers">
           <th>Stop ID</th>
           <th>Stop Name</th>
           <th>Flight Name</th>

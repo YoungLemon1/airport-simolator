@@ -1,12 +1,24 @@
+html {
+  height: 100vh;
+}
+
+body {
+  background-color: #eef6fd;
+}
+
+#root {
+  height: fit-content;
+}
+
 h1,
 h2 {
   margin: 6px;
 }
 .grid-container {
   display: grid;
-  gap: 10px;
-  background-color: #95b3ca;
-  padding: 10px;
+  gap: 1rem;
+  background-color: #636d7a;
+  padding: 1.2rem;
   width: 100%;
 }
 
@@ -35,7 +47,7 @@ h2 {
   grid-row: 1;
 }
 .stop4 {
-  background-color: rgb(23, 212, 232, 0.8);
+  background-color: rgba(236, 192, 45, 0.904);
   grid-column: 1 / span 5;
   grid-row: 1;
 }
@@ -44,15 +56,20 @@ h2 {
   grid-row: 1 / span 2;
 }
 .stop6 {
-  background-color: rgb(12, 187, 242, 0.8);
   grid-column: 3;
   grid-row: 4;
 }
 .stop7 {
-  background-color: rgb(12, 187, 242, 0.8);
   grid-column: 4;
   grid-row: 4;
 }
+
+.stop6,
+.stop7 {
+  background-color: rgba(213, 235, 16, 0.8);
+  min-width: 5rem;
+}
+
 .stop5 {
   grid-column: 1;
   grid-row: 2;
@@ -73,7 +90,7 @@ h2 {
 
 #airport-status {
   padding: 10px;
-  align-items: c;
+  align-items: center;
 }
 
 #airport-status table {
@@ -83,6 +100,8 @@ h2 {
 }
 
 #airport-status table * {
+  font-size: 1.4rem;
+  background-color: white;
   width: max-content;
   border: 1px solid slategray;
 }
@@ -97,15 +116,57 @@ td {
   text-align: center;
 }
 
-#start-button-container {
-  height: 100px;
+#stops-headers th {
+  background-color: rgb(19, 51, 100);
+  color: white;
+}
+
+#flights-headers th {
+  background-color: rgb(12, 57, 124);
+  color: white;
+}
+
+#airport-stops p {
+  font-size: 1.5rem;
+}
+
+#button-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
-.menu-btn {
+
+#button-container button {
+  font-size: 1.6rem;
+  border-radius: 5px;
   margin-right: 4px;
   margin-left: 4px;
   padding: 16px 32px;
-  font-size: larger;
+}
+
+#start-button {
+  background-color: rgb(97, 175, 82);
+  color: white;
+}
+
+#start-button:hover:enabled {
+  background-color: rgb(115, 201, 98);
+}
+
+#start-button:disabled {
+  background-color: rgba(115, 201, 98, 0.5);
+}
+
+#stop-button {
+  background-color: rgb(190, 54, 73);
+  color: white;
+}
+
+#stop-button:hover:enabled {
+  background-color: rgb(230, 66, 87);
+}
+
+#stop-button:disabled {
+  background-color: rgba(190, 54, 73, 0.5);
 }

@@ -3,13 +3,13 @@ const FlightTable = ({ flights }) => {
     return new Intl.DateTimeFormat("es", {
       dateStyle: "short",
       timeStyle: "short",
-      hour12: true,
+      hour12: false,
     }).format(new Date(flight.createdTime));
   };
   return (
     <table id="flights">
       <thead>
-        <tr>
+        <tr id="flights-headers">
           <th>Flight ID</th>
           <th>Flight Name</th>
           <th>Stop ID</th>

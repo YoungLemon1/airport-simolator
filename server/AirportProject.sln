@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirportProject", "AirportPr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightSimualtor", "FlightSimualtor\FlightSimualtor.csproj", "{580388B9-35F9-4572-96E1-3E5A4CE29F64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelsDLL", "ModelsDLL\ModelsDLL.csproj", "{1E270529-10FC-494A-BD6A-4B04C71FB07F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelsDLL", "ModelsDLL\ModelsDLL.csproj", "{1E270529-10FC-494A-BD6A-4B04C71FB07F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +15,8 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{325C3F11-6C4F-4ADC-817A-1AC6D874A287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{325C3F11-6C4F-4ADC-817A-1AC6D874A287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{325C3F11-6C4F-4ADC-817A-1AC6D874A287}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{325C3F11-6C4F-4ADC-817A-1AC6D874A287}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{325C3F11-6C4F-4ADC-817A-1AC6D874A287}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{325C3F11-6C4F-4ADC-817A-1AC6D874A287}.Release|Any CPU.Build.0 = Release|Any CPU
 		{580388B9-35F9-4572-96E1-3E5A4CE29F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
