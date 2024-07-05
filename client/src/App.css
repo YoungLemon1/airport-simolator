@@ -27,7 +27,8 @@ h2 {
   text-align: center;
   font-size: larger;
   font-weight: 100;
-  border: 1px solid black;
+
+  border: none;
   min-width: 125.8px;
   padding: 20px;
 }
